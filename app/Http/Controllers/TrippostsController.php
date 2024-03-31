@@ -13,7 +13,7 @@ class TrippostsController extends Controller
         $data = [];
         if (\Auth::check()) {
             $user = \Auth::user();
-            $tripposts = $user->tripposts()->orderBy('created_at','desc')->paginate(10);
+            $tripposts = $user->feed_tripposts()->orderBy('created_at','desc')->paginate(10);
             $data = [
                 'user' => $user,
                 'tripposts' => $tripposts,
@@ -27,12 +27,19 @@ class TrippostsController extends Controller
         // バリデーション
         $request->validate([
             'content' => 'required|max:255',
+            'title' => 'required|max:255',
+            'image' => 'image|max:1024'
         ]);
+        
+        $imagePath = null;
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('public/img');
+        }
         
         $request->user()->tripposts()->create([
             'content' => $request->content,
             'title' => $request->title,
-            'image' => $request->image,
+            'image' => $imagePath,
             
         ]);
 
@@ -53,5 +60,19 @@ class TrippostsController extends Controller
         // 前のURLへリダイレクトさせる
         return back()
             ->with('Delete Failed');
+    }
+    public function upload(Request $request)
+    {
+        // ディレクトリ名
+        $dir = 'img';
+
+        // アップロードされたファイル名を取得
+        $file_name = $request->file('file')->getClientOriginalName();
+
+        // 取得したファイル名で保存
+        // storage/app/public/任意のディレクトリ名/
+        $request->file('file')->storeAs('public/' . $dir, $file_name);
+
+        return redirect('/');
     }
 }

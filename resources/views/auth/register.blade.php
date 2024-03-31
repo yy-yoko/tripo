@@ -24,10 +24,10 @@
                 <input type="email" name="email" class="input input-bordered w-full">
             </div>
             <div class="form-control my-4">
-                <label for="email" class="label">
+                <label for="profile" class="label">
                     <span class="label-text">自己紹介</span>
                 </label>
-                <input type="email" name="email" class="input input-bordered w-full">
+                <textarea type="profile" name="profile" class="input input-bordered w-full"></textarea>
             </div>
 
             <div class="form-control my-4">

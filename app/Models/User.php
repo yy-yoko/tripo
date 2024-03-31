@@ -12,32 +12,18 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'name',
         'email',
         'password',
+        'profile',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
@@ -46,8 +32,95 @@ class User extends Authenticatable
         return $this->hasMany(Trippost::class);
     }
     
-    public function loadRelationshipCounts() 
+    public function loadRelationshipCounts()
     {
-        $this->loadCount('tripposts');
+        $this->loadCount('tripposts','followings','followers','favorites');
     }
+    public function followings()
+    {
+        return $this->belongsToMany(User::class, 'user_follow', 'user_id', 'follow_id')->withTimestamps();
+    }
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'user_follow', 'follow_id', 'user_id')->withTimestamps();
+    }
+   
+   public function follow($userId)
+    {
+        $exist = $this->is_following($userId);
+        $its_me = $this->id == $userId;
+        
+        if ($exist || $its_me) {
+            return false;
+        } else {
+            $this->followings()->attach($userId);
+            return true;
+        }
+    }
+    
+    public function unfollow($userId)
+    {
+        $exist = $this->is_following($userId);
+        $its_me = $this->id == $userId;
+        
+        if ($exist && !$its_me) {
+            $this->followings()->detach($userId);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function is_following($userId)
+    {
+        return $this->followings()->where('follow_id', $userId)->exists();
+    }
+    
+   public function feed_Tripposts()
+    {
+        $userIds = $this->followings()->pluck('users.id')->toArray();
+        $userIds[] = $this->id;
+        return Trippost::whereIn('user_id', $userIds);
+    }
+    
+    // この投稿をお気に入り中のユーザ。（Userモデルとの関係を定義）
+    public function favorites()
+    {
+        return $this->belongsToMany(Trippost::class,'favorites','user_id','trippost_id')->withTimestamps();        
+    }
+    
+    // $trippost_idで指定された投稿をお気に入りにする。
+    public function favorite($tripposts)
+    {
+        $exist = $this->is_favorite($tripposts);
+        
+        if($exist) {
+            return false;
+        } else {
+            $this->favorites()->attach($tripposts);
+            return true;
+        }
+    }
+    
+    public function unfavorite($tripposts)
+    {
+        $exist = $this->is_favorite($tripposts);
+
+        if ($exist) {
+            $this->favorites()->detach($tripposts);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    /**
+     * 指定されたtrippost_idの投稿をこのユーザがお気に入り中であるか調べる。お気に入り中ならtrueを返す。
+     */
+    public function is_favorite($tripposts)
+    {
+        return $this->favorites()->where('trippost_id',$tripposts)->exists();
+    }
+
 }
+   
+

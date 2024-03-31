@@ -2,16 +2,16 @@
 
 @section('content')
     @if (Auth::check())
-        <div class="sm:grid sm:grid-cols-3 sm:gap-10">
-            <aside class="mt-4">
+        <div class="sm:flex sm:gap-10 flex-col">
+            <div class="sm:w-full mb-4">
                 {{-- ユーザ情報 --}}
                 @include('users.card')
-            </aside>
-            <div class="sm:col-span-2">
-                {{-- 投稿フォーム --}}
-                @include('tripposts.form')
+            </div>
+            <div class="sm:col-span-2 mt-4">
                 {{-- 投稿一覧 --}}
                 @include('tripposts.tripposts')
+                {{-- 投稿フォーム --}}
+                @include('tripposts.form')
             </div>
         </div>
     @else
@@ -26,9 +26,8 @@
             </div>
         </div>
         <div class="prose bg-base-200 mx-auto max-w-full rounded">
-            
             <div class="hero-content text-center my-10 max-w-full">
-             <h2>お知らせ</h2>   
+                <h2>お知らせ</h2>
             </div>
             <div class="hero-content text-center my-10">
             </div>
