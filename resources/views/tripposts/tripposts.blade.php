@@ -6,6 +6,7 @@
                     @foreach ($tripposts as $trippost)
                         <div class="bg-white shadow-md p-4">
                             {{-- 画像の表示 --}}
+                            <!-- 画像表示部分 -->
                             @if ($trippost->image)
                                 <img src="{{ Storage::url($trippost->image) }}" alt="画像" class="max-w-full max-h-48 mb-4">
                             @endif

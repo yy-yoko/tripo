@@ -26,13 +26,16 @@ class TrippostsController extends Controller
     {
         // バリデーション
         $request->validate([
-            'content' => 'required|max:255',
+            'content' => 'required',
             'title' => 'required|max:255',
-            'image' => 'image|max:1024'
+            'image' => 'image|max:2048'
         ]);
         
+        // 画像パスの初期化
         $imagePath = null;
+        // 画像がアップロードされた場合の処理
         if ($request->hasFile('image')) {
+            // 画像をストレージに保存
             $imagePath = $request->file('image')->store('public/img');
         }
         
@@ -70,8 +73,8 @@ class TrippostsController extends Controller
         $file_name = $request->file('file')->getClientOriginalName();
 
         // 取得したファイル名で保存
-        // storage/app/public/任意のディレクトリ名/
-        $request->file('file')->storeAs('public/' . $dir, $file_name);
+        // storage/app/public/img任意のディレクトリ名/
+        $request->file('file')->storeAs('public/img' . $dir, $file_name);
 
         return redirect('/');
     }

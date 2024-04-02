@@ -15,7 +15,7 @@
                 <div class="form-control mt-4">
                     <textarea rows="4" maxlength="200" name="content" placeholder="文章（最大200文字）" class="input input-bordered w-full h-48"></textarea>
                 </div>
-                {{-- 画像フォーム --}}
+                
                 <input type="file" name="image" id="image" accept="image/*" class="form-control mt-4">
                 
                 <button type="submit" class="btn btn-primary btn-block normal-case mt-4">投稿する</button>

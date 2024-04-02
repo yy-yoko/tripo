@@ -9,7 +9,7 @@ class Trippost extends Model
 {
     use HasFactory;
     
-    protected $fillable = ['content','title','image'];
+    protected $fillable = ['title','content','image'];
     
     public function user(){
         return $this->belongsTo(User::class);
