@@ -15,13 +15,19 @@
             </div>
         </div>
     @else
-        <div class="prose hero bg-base-200 mx-auto max-w-full rounded">
-            <div class="hero-content text-center my-10">
+        <div class="prose hero mx-auto max-w-full">
+            <div class="hero-content my-10">
                 <div class="max-w-md mb-10">
                     <h2>旅のマッチングプラットフォーム、Tripo</h2>
                     <p>Tripoは、ユーザーがより豊かな旅行体験をするための強力なツールです。あなたの次の旅行を計画する際に、Tripoがあなたのパートナーとなり、快適で楽しい滞在をサポートします。</p>
                     {{-- ユーザ登録ページへのリンク --}}
                     <a class="btn btn-primary btn-lg normal-case" href="{{ route('register') }}">はじめに</a>
+                </div>
+                <div class="max-w-md mb-10">
+                    <h2></h2>
+                    <p></p>
+                    {{-- ユーザ登録ページへのリンク --}}
+                    <a class=""></a>
                 </div>
             </div>
         </div>
@@ -35,7 +41,7 @@
             </div>
         </div>
         <div class="prose hero bg-base-200 mx-auto max-w-full rounded">
-            <div class="hero-content text-center my-10">
+            <div class="hero-content my-10">
                 <div class="max-w-md mb-10">
                     <h2>Tripoアプリの使い方</h2>
                     <h3>目的地を日時を指定する</h3>
@@ -46,7 +52,7 @@
             </div>
         </div>
         <div class="prose hero bg-base-200 mx-auto max-w-full rounded">
-            <div class="hero-content text-center my-10">
+            <div class="hero-content my-10">
                 <div class="max-w-md mb-10">
                     <h3>プランを選ぶ</h3>
                     <p>予約する際に、リアルタイムでの空室状況の確認と即時予約が可能な機能を提供します。これにより、ユーザーが素早く宿泊施設を確保することができます。</p>
@@ -55,8 +61,8 @@
                 </div>
             </div>
         </div>
-        <div class="prose hero bg-base-200 mx-auto max-w-full rounded">
-            <div class="hero-content text-center my-10">
+        <div class="prose hero bg-base-200 mx-auto max-w-full rounded mt-8">
+            <div class="hero-content my-10">
                 <div class="max-w-md mb-10">
                     <h2>Tripo体験記</h2>
                     {{-- ユーザ登録ページへのリンク --}}
