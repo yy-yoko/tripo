@@ -8,11 +8,11 @@
     <li><a class="link link-hover" href="#" onclick="event.preventDefault();this.closest('form').submit();">ログアウト</a></li>
 @else
     {{-- お知らせページへのリンク --}}
-    <li><a class="link link-hover" href="{{ route('register') }}">お知らせ</a></li>
+    <li><a class="link link-hover" href="{{ route('information.information') }}">お知らせ</a></li>
     {{-- サービスページへのリンク --}}
-    <li><a class="link link-hover" href="{{ route('register') }}">サービス</a></li>
+    <li><a class="link link-hover" href="{{ route('service.service') }}">サービス</a></li>
     {{-- アプリについてページへのリンク --}}
-    <li><a class="link link-hover" href="{{ route('register') }}">アプリについて</a></li>
+    <li><a class="link link-hover" href="{{ route('appli.appli') }}">アプリについて</a></li>
     {{-- ユーザ登録ページへのリンク --}}
     <li><a class="link link-hover" href="{{ route('register') }}">はじめに</a></li>
     <li class="divider lg:hidden"></li>

@@ -27,6 +27,10 @@ Route::get('/dashboard', [TrippostsController::class,'index'] )->middleware(['au
 
 Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
 
+Route::get('/information', [UsersController::class, 'information'])->name('information.information');
+Route::get('/service', [UsersController::class, 'service'])->name('service.service');
+Route::get('/appli', [UsersController::class, 'appli'])->name('appli.appli');
+
 
 require __DIR__.'/auth.php';
 
@@ -37,14 +41,18 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('followings', [UsersController::class, 'followings'])->name('users.followings'); 
         Route::get('followers', [UsersController::class, 'followers'])->name('users.followers'); 
         Route::get('favorites', [UsersController::class, 'favorites'])->name('users.favorites');
+
         });
         
     Route::resource('users', UsersController::class, ['only' => ['index', 'show']]);
     Route::resource('tripposts',TrippostsController::class,['only' => ['store','destroy']]);
     Route::post('/posts', [TrippostsController::class, 'store'])->name('posts.store');
+
+
     
     Route::group(['prefix' => 'tripposts/{id}'], function() { 
         Route::post('favorites', [FavoritesController::class, 'store'])->name('favorites.favorite');  
         Route::delete('unfavorite', [FavoritesController::class, 'destroy'])->name('favorites.unfavorite'); 
+
     });
 });

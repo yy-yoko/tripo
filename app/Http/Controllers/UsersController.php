@@ -76,4 +76,16 @@ class UsersController extends Controller
             'tripposts' => $favorites,
         ]);
     }
+    public function information()
+    {
+        return view('information.information');
+    }
+    public function service()
+    {
+        return view('service.service');
+    }
+    public function appli()
+    {
+        return view('appli.appli');
+    }
 }
