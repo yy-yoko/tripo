@@ -12,7 +12,7 @@
             </div>
         </div>
         
-        <div class="prose hero bg-base-200 mx-auto max-w-full rounded">
+        <div class="bg-base-200">
             <div class="flex prose hero-content my-10 mx-auto">
                 <div class="flex-1 mb-10 w-14">
                     <h2>Tripoアプリについて</h2>
@@ -25,7 +25,7 @@
                 </div>
             </div>
         </div>
-        <div class="prose hero bg-base-200 mx-auto max-w-full rounded">
+        <div class="bg-base-200">
             <div class="flex prose hero-content my-10 mx-auto">
                 <div class="flex-1 w-64 mb-10">
                 </div>
@@ -37,7 +37,7 @@
                 </div>
             </div>
         </div>
-        <div class="prose hero bg-base-200 mx-auto max-w-full rounded">
+        <div class="bg-base-200">
             <div class="flex prose hero-content my-10 mx-auto">
                 <div class="flex-1 mb-10 w-14">
                     <h2>ご利用可能エリア</h2>

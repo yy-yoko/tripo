@@ -12,7 +12,7 @@
             </div>
         </div>
         
-        <div class="prose hero bg-base-200 mx-auto max-w-full rounded">
+        <div class="bg-base-200">
             <div class="flex prose hero-content my-10 mx-auto">
                 <div class="flex-1 mb-10 w-14">
                     <h2>Tripoのサービス</h2>
@@ -25,7 +25,7 @@
                 </div>
             </div>
         </div>
-        <div class="prose hero bg-base-200 mx-auto max-w-full rounded">
+        <div class="bg-base-200">
             <div class="flex prose hero-content my-10 mx-auto">
                 <div class="flex-1 w-64 mb-10">
                 </div>
@@ -37,8 +37,8 @@
                 </div>
             </div>
         </div>
-        <div class="prose hero bg-base-200 mx-auto max-w-full rounded">
-            <div class="hero-content my-10">
+        <div class="bg-base-200">
+            <div class="flex prose hero-content my-10 mx-auto">
                 <div class="flex-1 mb-10 w-14">
                     <h2>ご利用方法</h2>
                     <h3>目的地を日時を指定する</h3>
@@ -46,10 +46,12 @@
                     {{-- アプリについてページへのリンク --}}
                     <a class="btn btn-primary btn-lg normal-case" href="{{ route('register') }}">詳しくみる</a>
                 </div>
+                <div class="flex-1 w-64 mb-10">
+                </div>
             </div>
         </div>
-        <div class="prose hero bg-base-200 mx-auto max-w-full rounded">
-            <div class="hero-content my-10">
+        <div class="bg-base-200">
+            <div class="flex prose hero-content my-10 mx-auto">
                 <div class="flex-1 w-64 mb-10">
                 </div>
                 <div class="flex-1 mb-10 w-14">
